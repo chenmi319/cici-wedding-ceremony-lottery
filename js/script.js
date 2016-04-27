@@ -7,11 +7,11 @@ function beginRndNum(trigger){
 		running = false;
 		clearTimeout(g_Timer);		
 		$(trigger).val("开始");
-		$('#ResultNum').css('color','red');
+		$('#ResultNum').css('color','hotpink');
 	}
 	else{
 		running = true;
-		$('#ResultNum').css('color','black');
+		$('#ResultNum').css('color','hotpink');
 		$(trigger).val("停止");
 		beginTimer();
 	}
