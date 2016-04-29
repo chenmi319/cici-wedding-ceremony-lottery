@@ -38,6 +38,7 @@ function beginRndNum(trigger){
     $(trigger).val("开始");
     $('#ResultNum').css('color','red');
     $("#history").html(historyNums.join(" "));
+    $("#music")[0].play();
     //firework_interval = setInterval(playFirework,400);
   }else{
     running = true;
@@ -46,6 +47,8 @@ function beginRndNum(trigger){
     $(trigger).val("停止");
     beginTimer();
     //clearInterval(firework_interval);
+    $("#music")[0].pause();
+    $("#music")[0].currentTime = 0;
   }
 }
 
@@ -81,6 +84,8 @@ function reset(){
   $("#startBtn").val("开始");
   $("#resetBtn").hide();
   $('#ResultNum').css('visibility','hidden');
+  $("#music")[0].pause();
+  $("#music")[0].currentTime = 0;
 }
 
 
