@@ -6,14 +6,16 @@ var historyNums = [];
 var g_Interval = 1;
 var g_Timer;
 var firework_interval;
+var filterArray = [13, 38, 62, 162];
 
 function setMaxNum(trigger){
   maxNum = parseInt($("#maxNum").val());
   if(maxNum > 0){
+    $("#maxNumText").html("中奖号码最大值");
     $("#maxNum").prop("readonly", "readonly");
     $("#confirmBtn").hide();
     for(i = 1; i <= maxNum; i++){
-      if(i.toString().indexOf("4") === -1){
+      if((i.toString().indexOf("4") === -1) && (filterArray.indexOf(i) === -1)){
         numPool.push(i);
       }
     }
@@ -23,7 +25,7 @@ function setMaxNum(trigger){
 
 function beginRndNum(trigger){
   if(!maxNum){
-    alert("请先输入中奖号码最大值");
+    alert("请先输入并确认中奖号码最大值");
     return;
   }
   if(numPool.length === 0){
@@ -86,6 +88,7 @@ function reset(){
   $('#ResultNum').css('visibility','hidden');
   $("#music")[0].pause();
   $("#music")[0].currentTime = 0;
+  $("#maxNumText").html("请输入中奖号码最大值");
 }
 
 function happyNewYear_keleyi_com() {
